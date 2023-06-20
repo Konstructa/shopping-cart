@@ -2,7 +2,7 @@ import { FC } from "react"
 import { AddToCartIcon } from "../Icons"
 import './styles.css'
 
-interface Product {
+export interface IProduct {
   id: number
   title: string
   description: string
@@ -16,26 +16,20 @@ interface Product {
   images: string[]
 }
 
-interface Products {
-  products: Product[],
-  total: number,
-  skip: number,
-  limit: number
+export interface IProducts {
+  products: IProduct[],
 }
 
-interface ListProps {
-  catalog: Products
-}
-
-export const Products: FC<ListProps> = ({ catalog: { products } }) => {
+export const Products: FC<IProducts> = ({ products }) => {
   return (
     <main className="products">
       <ul>
-        {products.map( product => (
+        {products.slice(0, 10).map( product => (
           <li key={product.id}>
             <img src={product.thumbnail} alt={product.title} />
             <div>
               <strong>{product.title}</strong>
+              <p>$ {product.price.toFixed(2)}</p>
             </div>
             <div>
               <button>
