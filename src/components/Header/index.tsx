@@ -1,5 +1,5 @@
 import { Filters } from '../Filters'
-import './styles.css'
+
 
 export const Header = () => {
   return (
